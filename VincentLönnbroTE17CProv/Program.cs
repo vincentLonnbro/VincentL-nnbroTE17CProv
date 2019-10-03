@@ -10,6 +10,7 @@ namespace VincentLönnbroTE17CProv
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello World!");
         }
     }
 }
