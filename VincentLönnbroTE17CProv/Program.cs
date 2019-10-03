@@ -10,7 +10,10 @@ namespace VincentLönnbroTE17CProv
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Böcker bok1 = new Böcker();
+    
+            bok1.PrintInfo();
+            Console.Read();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace VincentLönnbroTE17CProv
     class Böcker
     {
         public int price;
-        public List<string> bookList;
+        private List<string> bookList;
 
         private string name;
         private int rarity;
@@ -20,7 +20,7 @@ namespace VincentLönnbroTE17CProv
 
         private Random generator = new Random();
 
-        Böcker()
+        public Böcker()
         {
             category = GenerateCategories();
             name = GenerateBooks();
@@ -28,21 +28,32 @@ namespace VincentLönnbroTE17CProv
             rarity = generator.Next(1, 6); // Slumpar ett rarity värde mellan 1 och 5
             cursed = GenerateCurse();
         }
-        public void GetName()
+        public bool IsCursed()
         {
-            Console.WriteLine(name);
+            if (generator.Next(1 , 11) > 8)
+            {
+                return cursed;
+            }
+            else
+            {
+                return !cursed;
+            }
+        } 
+        public string GetName()
+        {
+            return name;
         }
-        public void GetCategory()
+        public string GetCategory()
         {
-            Console.WriteLine(category);
+            return category;
         }
-        public void Evaluate()
+        public int Evaluate()
         {
+            evaluated = true;
             int s = actualValue * rarity;
             float lowerS = s * 0.5f;
             float higherS = s * 1.5f;
-            int correctPrice = generator.Next((int)lowerS, (int)higherS);
-            evaluated = true;
+            return generator.Next((int)lowerS, (int)higherS);
         }
 
         public void PrintInfo()
@@ -59,12 +70,8 @@ namespace VincentLönnbroTE17CProv
 
         private string GenerateBooks()
         {
-            Console.WriteLine();
-            for (int i = 0; i < 10; i++)
-            {
-                bookList.Add("Book " + i);
-            }
-            return bookList[generator.Next(0, bookList.Count)];
+            Console.WriteLine("Skriv in ett namn på boken!");
+            return Console.ReadLine();
         }
 
         private string GenerateCategories()
