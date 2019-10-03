@@ -28,10 +28,21 @@ namespace VincentLönnbroTE17CProv
             rarity = generator.Next(1, 6); // Slumpar ett rarity värde mellan 1 och 5
             cursed = GenerateCurse();
         }
+        public void GetName()
+        {
+            Console.WriteLine(name);
+        }
+        public void GetCategory()
+        {
+            Console.WriteLine(category);
+        }
         public void Evaluate()
         {
-            double s = actualValue * rarity * 1.5;
-            int correctPrice = generator.Next(Math. * 0.5, (actualValue * rarity) * 1.5);
+            int s = actualValue * rarity;
+            float lowerS = s * 0.5f;
+            float higherS = s * 1.5f;
+            int correctPrice = generator.Next((int)lowerS, (int)higherS);
+            evaluated = true;
         }
 
         public void PrintInfo()
